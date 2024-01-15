@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+        }
+        tr, th {
+            border: 1px solid yellow;
+            padding: 8px;
+        }
+        th {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <h2>Absesi Karyawan</h2>
+    <form id="formkaryawan">
+        <label for="idkaryawan">ID Karyawan</label>
+        <input type="text" name="idkaryawan" id="idkaryawan" required>
+        <label for="nama">Nama : </label>
+        <input type="text" name="namakaryawan" id="nama" required>
+        <label for="jamberangkat">Jam Berangkat : </label>
+        <input type="time" name="jamberangkat" id="jamberangkat" required>
+        <label for="jampulang">Jam Pulang : </label>
+        <input type="time" name="jampulang" id="jampulang" required>
+        <button type="button" onclick="tambah()">Kirim</button>
+    </form>
+
+    <table id="tablekaryawan">
+        <tr>
+            <th>ID Karyawan</th>
+            <th>Nama</th>
+            <th>Jam Berangkat</th>
+            <th>Jam Pulang</th>
+        </tr>
+    </table>
+
+    <script>
+        function karyawan(id, nama, jamberangkat, jampulang) {
+            this.id = id;
+            this.nama = nama;
+            this.jamberangkat = jamberangkat;
+            this.jampulang = jampulang;
+        }
+
+        function tambah() {
+            var idkaryawan = document.getElementById("idkaryawan").value;
+            var nama = document.getElementById("nama").value;
+            var jamberangkat = document.getElementById("jamberangkat").value;
+            var jampulang = document.getElementById("jampulang").value;
+
+            var karyawanbaru = new karyawan(idkaryawan, nama, jamberangkat, jampulang);
+            var table = document.getElementById("tablekaryawan"); 
+            var row = table.insertRow(-1);
+            var cells = [
+                row.insertCell(0),
+                row.insertCell(1),
+                row.insertCell(2),
+                row.insertCell(3),
+            ];
+
+            cells[0].innerHTML = karyawanbaru.id;
+            cells[1].innerHTML = karyawanbaru.nama;
+            cells[2].innerHTML = karyawanbaru.jamberangkat;
+            cells[3].innerHTML = karyawanbaru.jampulang;
+        }
+    </script>
+</body>
+</html>
